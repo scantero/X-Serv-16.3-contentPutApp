@@ -7,8 +7,6 @@ Esta ejercicio parte de la clase <b>contentApp</b> (ejercicio 16.3), basada en e
 
 En este ejercicio se pide modificar <b>contentApp</b> en <b>contentPutApp</b>. En este caso, la clase permite la actualización del contenido mediante peticiones HTTP PUT. Para probarla, se puede usar el add-on de Firefox llamado <i>Poster</i>. La clase será minimalista, basta con que funcione con <i>Poster</i>.
 
-## Entrega
-
 ## Forma de entrega
 
 Has de tener un repositorio llamado X-Serv-16.3-contentPutApp en tu cuenta en GitHub
