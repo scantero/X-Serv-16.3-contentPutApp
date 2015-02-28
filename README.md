@@ -9,13 +9,5 @@ En este ejercicio se pide modificar <b>contentApp</b> en <b>contentPutApp</b>. E
 
 ## Forma de entrega
 
-Has de tener un repositorio llamado X-Serv-16.3-contentPutApp en tu cuenta en GitHub
-que incluya el fichero de nombre 'contentapp.py' que contenga las
-instrucciones en Python para solucionar el ejercicio.
+Este ejercicio no requiere ser entregado.
 
-Se proporciona un script, check.py, para comprobar la entrega correcta
-del ejercicio. El script de comprobación se ha de ejecutar desde terminal
-pasándole como parámetro tu nombre de usuario en GitHub. Así, un ejemplo de
-ejecución sería:
-
-$ python check.py gregoriorobles
