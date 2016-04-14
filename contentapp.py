@@ -20,31 +20,43 @@ class contentApp (webapp.webApp):
     with the web content."""
 
     # Declare and initialize content
-    content = {'/': 'Root page',
+    content = {'/': 'Root page',        #Inicializo el diccionario
                '/page': 'A page'
                }
 
     def parse(self, request):
         """Return the resource name (including /)"""
+        metodo = request.split(' ', 1)[0]
+        recurso = request.split(' ', 2)[1] #Lo divido por espacios dos veces y me quedo con el segundo parametro
+        cuerpo = request.split('\r\n\r\n', 1)[1]
+        return metodo, recurso, cuerpo
 
-        return request.split(' ', 2)[1]
-
-    def process(self, resourceName):
+    def process(self, peticion):
         """Process the relevant elements of the request.
 
         Finds the HTML text corresponding to the resource name,
         ignoring requests for resources not in the dictionary.
         """
+        metodo, recurso, cuerpo = peticion
 
-        if resourceName in self.content.keys():
+        if metodo == "GET":
+            if recurso in self.content:  #Si esta en el diccionario
+                httpCode = "200 OK"
+                htmlBody = "<html><body>" + self.content[recurso] \
+                    + "</body></html>"
+            else:               #Si no esta en el diccionario
+                httpCode = "404 Not Found"
+                htmlBody = "Not Found"
+        elif metodo == "PUT" or metodo == "POST":
+            #pass   #para que pase, y no se error de identacion
+            self.content[recurso] = cuerpo
             httpCode = "200 OK"
-            htmlBody = "<html><body>" + self.content[resourceName] \
-                + "</body></html>"
+            htmlBody = "Todo bien!"
         else:
-            httpCode = "404 Not Found"
-            htmlBody = "Not Found"
+            httpCode = "405 Method not allowed"
+            htmlBody = "Go away!"
         return (httpCode, htmlBody)
 
 
 if __name__ == "__main__":
-    testWebApp = contentApp("localhost", 1234)
+    testWebApp = contentApp("localhost", 1235)
